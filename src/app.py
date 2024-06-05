@@ -350,17 +350,16 @@ def update_chat(n_clicks, user_query, history, api_key):
         # Append assistant message to chat history
         chat_history.append({"role": "assistant", "content": assistant_reply})
 
-        # Update chat history display
-        history_elements = []
-        for msg in chat_history:
-            if msg['role'] == 'user':
-                history_elements.append(
-                    html.Div(msg['content'], style={'backgroundColor': '#D3D3D3', 'padding': '10px', 'borderRadius': '10px', 'marginBottom': '10px', 'fontSize': '18px', 'color': 'black', 'textAlign': 'left', 'marginRight': '10%'})
-                )
-            else:
-                history_elements.append(
-                    html.Div(msg['content'], style={'backgroundColor': 'white', 'color': 'black', 'padding': '10px', 'borderRadius': '10px', 'marginBottom': '10px', 'fontSize': '18px', 'textAlign': 'left', 'marginLeft': '10%'})
-                )
+        # Keep only the last user and assistant messages
+        last_user_msg = [msg for msg in chat_history if msg['role'] == 'user'][-1]
+        last_assistant_msg = [msg for msg in chat_history if msg['role'] == 'assistant'][-1]
+
+        # Update chat history display with only the last messages
+        history_elements = [
+            html.Div(last_user_msg['content'], style={'backgroundColor': '#D3D3D3', 'padding': '10px', 'borderRadius': '10px', 'marginBottom': '10px', 'fontSize': '18px', 'color': 'black', 'textAlign': 'left', 'marginRight': '10%'}),
+            html.Div(last_assistant_msg['content'], style={'backgroundColor': 'white', 'color': 'black', 'padding': '10px', 'borderRadius': '10px', 'marginBottom': '10px', 'fontSize': '18px', 'textAlign': 'left', 'marginLeft': '10%'})
+        ]
+
         return history_elements
     return history
 
