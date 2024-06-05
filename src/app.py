@@ -266,23 +266,26 @@ html.Div([
 
 
 html.Div([
-        html.H3("💬 ChatWithYourFeedback", className='header_manual', style={'textAlign': 'center'}),
-        html.P("""Fragen Sie den Chatbot z. B. >> Bitte schaue dir die 1-Sterne Bewertungen von Freistaat Caravaning an,
-               die das Thema Freundlichkeit aufgreifen. Welchen Themen tauchen darin auf? <<""", style={'textAlign': 'center', 'fontSize': '16px', 'marginBottom': '20px'}),
-        dcc.Input(id='input-text', type='text', value='', placeholder='Was möchte Sie erfahren?', style={'width': '80%', 'height': '50px', 'fontSize': '18px', 'paddingLeft': '10px', 'fontFamily': 'Roboto Condensed'}),
-        html.Button(id='submit-button', n_clicks=0, children='Submit', style={'fontSize': '18px', 'fontFamily': 'Roboto Condensed', 'marginRight': '20px', 'padding': '10px 20px'}),
-        dcc.Loading(
-            id="loading-indicator",
-            type="default",
-            children=html.Div(id='chat-history', style={'whiteSpace': 'pre-line', 'marginTop': '20px'})
-        )
-    ], className='box_text', style={'marginTop': '20px', 'marginBottom': '20px', 'paddingLeft': '70px', 'paddingRight': '70px'}),
+    html.H3("💬 ChatWithYourFeedback", className='header_manual', style={'textAlign': 'center'}),
+    html.P("""Nutzen Sie unseren Chatbot, um detaillierte Analysen und Vergleiche der 
+           Kundenbewertungen verschiedener Caravan-Händler zu erhalten. Zum Beispiel: 
+           Bitte vergleiche Händler X mit Händler Y beim Thema Kundenservice, basierend auf 
+           Bewertungen mit weniger als 3 Sternen. Worin unterscheiden sich die beiden Unternehmen?""", style={'textAlign': 'center', 'fontSize': '18px', 'marginBottom': '20px'}),
+    dcc.Input(id='input-text', type='text', value='', placeholder='Was möchte Sie erfahren?', style={'width': '80%', 'height': '50px', 'fontSize': '18px', 'paddingLeft': '10px', 'fontFamily': 'Roboto Condensed', 'marginBottom': '30px'}),  # Adjusted marginBottom
+    html.Button(id='submit-button', n_clicks=0, children='Submit', style={'fontSize': '18px', 'fontFamily': 'Roboto Condensed', 'marginLeft': '10px', 'padding': '10px 20px'}),
+    dcc.Loading(
+        id="loading-indicator",
+        type="default",
+        children=html.Div(id='chat-history', style={'whiteSpace': 'pre-line', 'marginTop': '20px'})
+    )
+], className='box_text', style={'marginTop': '20px', 'marginBottom': '20px', 'paddingLeft': '70px', 'paddingRight': '70px'}),
+
 
     html.Div([
-        html.H3("OpenAI API Key", className='header_manual', style={'textAlign': 'center'}),
-        dcc.Input(id='openai-api-key', type='password', placeholder='Enter your OpenAI API Key', style={'width': '80%', 'height': '50px', 'fontSize': '18px', 'paddingLeft': '10px', 'fontFamily': 'Roboto Condensed'}),
-    ], className='box_text', style={'marginTop': '20px', 'marginBottom': '20px', 'paddingLeft': '70px', 'paddingRight': '70px'})
-    
+    html.H3("API Key", className='header_manual', style={'textAlign': 'center', 'marginBottom': '20px'}),
+    dcc.Input(id='openai-api-key', type='password', placeholder='Geben Sie hier Ihren API Key ein.', style={ 'marginBottom': '30px', 'width': '80%', 'height': '50px', 'fontSize': '18px', 'paddingLeft': '10px', 'fontFamily': 'Roboto Condensed'}),
+], className='box_text', style={'marginTop': '20px', 'marginBottom': '20px', 'paddingLeft': '70px', 'paddingRight': '70px'}),
+
 ], className='wrapper')
 
 
