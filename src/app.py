@@ -9,7 +9,7 @@ from openai import OpenAI
 from openai.types.beta.assistant_stream_event import ThreadMessageDelta
 from openai.types.beta.threads.text_delta_block import TextDeltaBlock
 from dash.dependencies import Input, Output, State
-
+import plotly.express as px
 
 # Initialize the OpenAI client and assistant
 ASSISTANT_ID = 'asst_KSTLeF177cgnytEsMq5skwkl'
@@ -752,6 +752,7 @@ def update_dashboard(main_standort1, main_standort2, competitors, threshold, rat
     
     return (bar_chart, str(respondent_count), figure_line, topic_data, columns, style_data_conditional, topic_tooltip_data, 
             average_rating_data, average_rating_columns, rating_style_data_conditional, average_rating_tooltip_data, reviews_data, reviews_columns, asterisk_explanation)
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)

@@ -85,8 +85,6 @@
     text-align: center;
 }
 
-
-
 .container {
     display: flex;
     align-items: stretch;
@@ -113,4 +111,33 @@
 
 .dash-table-container .dash-table {
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* Mobile specific styles */
+@media only screen and (max-width: 600px) {
+    .container, .container_menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .box, .box_menu, .box_text {
+        width: 100%;
+        margin: 0;
+    }
+
+    #input-text {
+        width: 100% !important;
+    }
+
+    .header_manual {
+        font-size: 18px;
+    }
+
+    .header, .header_menu {
+        font-size: 16px;
+    }
+
+    .container .box {
+        padding: 10px;
+    }
 }
